@@ -36,7 +36,7 @@ MODULE factorialGcd;
 		WHILE  (7>3 ) DO
 			t := m;
 			m := n+2+3+4 + 5 * 6;
-			n := t;
+			n := t
 		END;
 		t := 23 *32+ 43   + 4543+3
 	END fun1;
@@ -48,7 +48,7 @@ MODULE factorialGcd;
 		WHILE  (7>3 ) DO
 			t := m;
 			m := n+2+(3)+4 + 5 * 6;
-			n := t;
+			n := t
 		END;
 		t := 23 *32+ 43   + 4543+3
 	END tmp;

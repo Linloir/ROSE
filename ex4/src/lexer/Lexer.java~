@@ -1076,14 +1076,14 @@ public class Lexer implements java_cup.runtime.Scanner {
                         if (yytext().startsWith("0")) {
                             // Parse as octal number
                             try {
-                                return new Number(yyline, yycolumn, Integer.parseInt(yytext(), 8));
+                                return new Number(yyline + 1, yycolumn + 1, Integer.parseInt(yytext(), 8));
                             } catch (NumberFormatException e) {
                                 throw new LexicalException("Invalid number");
                             }
                         } else {
                             // Parse as decimal number
                             try {
-                                return new Number(yyline, yycolumn, Integer.parseInt(yytext()));
+                                return new Number(yyline + 1, yycolumn + 1, Integer.parseInt(yytext()));
                             } catch (NumberFormatException e) {
                                 throw new LexicalException("Invalid number");
                             }
@@ -1117,7 +1117,7 @@ public class Lexer implements java_cup.runtime.Scanner {
           // fall through
           case 64: break;
           case 18:
-            { return new Identifier(yyline, yycolumn, yytext());
+            { return new Identifier(yyline + 1, yycolumn + 1, yytext());
             }
           // fall through
           case 65: break;

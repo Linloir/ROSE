@@ -60,6 +60,7 @@ $$
 \textit{act\_pars} \rightarrow & \; \textbf{(} \; \textit{expr\_list} \; \textbf{)} \\
     & | \; \epsilon \\
 \textit{expr\_list} \rightarrow & \; \textit{expr} \; \textit{ext\_expr} \\
+    & | \; \epsilon \\
 \textit{ext\_expr} \rightarrow & \; \textbf{,} \; \textit{expr} \; \textit{ext\_expr} \\
     & | \; \epsilon \\
 \textit{if\_stat} \rightarrow & \; \textbf{if} \; \textit{expr} \; \textbf{then} \; \textit{stat\_seq} \; \textit{elif\_seq} \; \textit{else\_stat} \; \textbf{end} \\
@@ -99,6 +100,7 @@ $$
 \begin{aligned}
 \textit{s} \rightarrow & \; \{ \; env = null \; \} \\
     & \; \textit{module} \\
+    & \; \{ \; for \; ( \; call \; \textbf{in} \; calls \; ) \quad call.verify() \; \} \\
     & \; \{ \; module.g\_mod.show() \; \} \\
 \textit{module} \rightarrow & \; \textbf{module} \; \textbf{id} \; \textbf{;} \\
     & \; \{ \;
@@ -262,17 +264,16 @@ $$
     & | \; \epsilon \\
 \textit{stat} \rightarrow & \; \textbf{id} \\
     & \; \{ \;
-            id\_stat.decl = env.get(\textbf{id}.lexeme); \;
             id\_stat.g\_stats = stat.g\_stats; \;
             id\_stat.id = \textbf{id}
         \} \\
     & \; \textit{id\_stat} \\
     & | \; \textit{if\_stat} \quad \{ \; stat.g\_stats.add(if\_stat.statement) \; \} \\
     & | \; \textit{while\_stat} \quad \{ \; stat.g\_stats.add(while\_stat.statement) \; \} \\
-\textit{id\_stat} \rightarrow & \; \{ \; assignment.decl = id\_stat.decl; \; assignment.id = id\_stat.id \; \} \\
+\textit{id\_stat} \rightarrow & \; \{ \; assignment.decl = env.get(id\_stat.id.getLexeme()); \; assignment.id = id\_stat.id \; \} \\
     & \; \textit{assignment} \\
     & \; \{ \; id\_stat.g\_stats.add(assignment.statement) \; \} \\
-    & | \; \{ \; proc\_call.decl = id\_stat.decl; \; proc\_call.id = id\_stat.id \; \} \\
+    & | \; \{ \; proc\_call.decl = env.get(id\_stat.id.getLexeme()); \; proc\_call.id = id\_stat.id \; \} \\
     & \; \textit{proc\_call} \\
     & \; \{ \; id\_stat.g\_stats.add(proc\_call.statement) \; \} \\
 \textit{assignment} \rightarrow & \; \{ \; decl = assignment.decl; \; sel.parent\_type = decl.type \; \} \\
@@ -295,6 +296,7 @@ $$
     & | \; \epsilon \quad \{ \; sel.text = \text{}''; \; sel.type = sel.parent\_type \; \} \\
 \textit{proc\_call} \rightarrow & \; \{ \; decl = proc\_call.decl \; \} \\
     & \; \textit{act\_pars} \\
+    & \; \{ \; calls.add(\textbf{new} ProcCall(proc\_call.id, \; act\_pars.types)) \; \} \\
     & \; \{ \; proc\_call.statement = \textbf{new} \; PrimitiveStatement(decl.lexeme \; || \; act\_pars.text) \; \} \\
 \textit{act\_pars} \rightarrow & \; \textbf{(} \; \textit{expr\_list} \; \textbf{)} \\
     & \; \{ \; act\_pars.types = expr\_list.types \; \} \\
@@ -305,6 +307,9 @@ $$
 \textit{expr\_list} \rightarrow & \; \textit{expr} \; \textit{ext\_expr} \\
     & \; \{ \; expr\_list.types = [ \; expr.type, \; ...ext\_expr.types \; ] \; \} \\
     & \; \{ \; expr\_list.text = expr.text \; || \; ext\_expr.text \; \} \\
+    & | \; \epsilon \\
+    & \; \{ \; expr\_list.types = [ \; ] \; \} \\
+    & \; \{ \; expr\_list.text = \text{}'' \; \} \\
 \textit{ext\_expr} \rightarrow & \; \textbf{,} \; \textit{expr} \; \textit{ext\_expr} \\
     & \; \{ \; ext\_expr_1.types = [ \; expr.type, \; ...ext\_expr.types \; ] \; \} \\
     & \; \{ \; ext\_expr.text = \text{}',' \; || \; expr.text \; || \; ext\_expr_1.text \; \} \\

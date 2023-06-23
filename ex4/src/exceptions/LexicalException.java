@@ -7,6 +7,6 @@ public class LexicalException extends OberonException {
     }
 
     public LexicalException(String s) {
-        super("LexicalException :\n" + s);
+        super("LexicalException: " + s);
     }
 }

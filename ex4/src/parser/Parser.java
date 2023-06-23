@@ -11,7 +11,10 @@ import java.io.*;
 import java.util.*;
 
 public class Parser {
+    public static boolean DELAY_CALL_VERIFY = false;
+
     private Env env;
+    private ArrayList<ProcCall> calls;
     private TokenHandle tokenHandle;
     private Token lookahead;
     
@@ -248,6 +251,7 @@ public class Parser {
         this.env = new Env(null);
         this.tokenHandle = handle;
         this.lookahead = tokenHandle.nextToken();
+        this.calls = new ArrayList<ProcCall>();
 
         ArrayList<Declaration> decls = new ArrayList<Declaration>();
         Hashtable<String, Object> extAttrs = new Hashtable<String, Object>();
@@ -275,11 +279,20 @@ public class Parser {
 
         match(Symbol.eof(), Symbol.class);
 
-        g_mod.show();
-
         env = cur;
 
         Logger.debug("End: parse");
+
+        if (DELAY_CALL_VERIFY) {
+            Logger.info("Verifing procedure call signatures");
+            for (ProcCall call : calls) {
+                call.verify();
+            }
+            Logger.info("Procedure call signatures verified");
+        }
+
+        Logger.info("Generating flowchart");
+        g_mod.show();
     }
 
     private _r_module module() throws IOException, OberonException {
@@ -1186,12 +1199,7 @@ public class Parser {
 
             Identifier id = match(new Identifier(), Identifier.class);
 
-            Declaration decl = env.getDecl(id.getLexeme());
-            if (decl == null) {
-                throw new UnknownIdentifier(id);
-            }
-
-            id_stat(id, decl, g_stats);
+            id_stat(id, g_stats);
 
             Logger.debug("End: stat");
         }
@@ -1218,7 +1226,7 @@ public class Parser {
         }
     }
 
-    private void id_stat(Identifier id, Declaration decl, SeqHandle g_stats) throws IOException, OberonException {
+    private void id_stat(Identifier id, SeqHandle g_stats) throws IOException, OberonException {
         Logger.debug("Start: id_stat");
         Logger.debug("Lookahead: " + lookahead.toString());
 
@@ -1229,7 +1237,7 @@ public class Parser {
         ) {
             Logger.debug("Use: eq1");
 
-            flowchart.PrimitiveStatement stmt = assignment(id, decl).statement;
+            flowchart.PrimitiveStatement stmt = assignment(id).statement;
 
             g_stats.add(stmt);
 
@@ -1244,7 +1252,7 @@ public class Parser {
         ) {
             Logger.debug("Use: eq2");
 
-            flowchart.PrimitiveStatement stmt = proc_call(decl).statement;
+            flowchart.PrimitiveStatement stmt = proc_call(id).statement;
 
             g_stats.add(stmt);
 
@@ -1264,7 +1272,7 @@ public class Parser {
         }
     }
 
-    private _r_assignment assignment(Identifier id, Declaration decl) throws IOException, OberonException {
+    private _r_assignment assignment(Identifier id) throws IOException, OberonException {
         Logger.debug("Start: assignment");
         Logger.debug("Lookahead: " + lookahead.toString());
 
@@ -1275,6 +1283,10 @@ public class Parser {
         ) {
             Logger.debug("Use: eq1");
 
+            Declaration decl = env.getDecl(id.getLexeme());
+            if (decl == null) {
+                throw new UnknownIdentifier(id);
+            }
             Object modifiers = decl.getExtAttr("modifiers");
             if (modifiers instanceof Declaration.Modifiers[]) {
                 Declaration.Modifiers[] mods = (Declaration.Modifiers[]) modifiers;
@@ -1427,7 +1439,7 @@ public class Parser {
         }
     }
 
-    private _r_proc_call proc_call(Declaration decl) throws IOException, OberonException {
+    private _r_proc_call proc_call(Identifier id) throws IOException, OberonException {
         Logger.debug("Start: proc_call");
         Logger.debug("Lookahead: " + lookahead.toString());
 
@@ -1440,17 +1452,26 @@ public class Parser {
         ) {
             Logger.debug("Use: eq1");
 
-            if (!(decl.getType() instanceof ProcedureType)) {
-                throw new UnexpectedType("ProcedureType", decl.getType(), lookahead.getLine(), lookahead.getColumn());
-            }
-
             _r_act_pars act_pars = act_pars();
 
-            if (!(ProcedureType.rawSig(act_pars.types).equals((ProcedureType) decl.getType()))) {
-                throw new TypeMismatch(decl.getType(), ProcedureType.rawSig(act_pars.types), lookahead.getLine(), lookahead.getColumn());
+            if (DELAY_CALL_VERIFY) {
+                Logger.warning("Verification of procedure call signature of identifier " + id.getLexeme() + " is delayed.");
+                ProcCall call = new ProcCall(id, act_pars.types, env);
+                calls.add(call);
+            } else {
+                Declaration decl = env.getDecl(id.getLexeme());
+                if (decl == null) {
+                    throw new UnknownIdentifier(id);
+                }
+                if (!(decl.getType() instanceof ProcedureType)) {
+                    throw new UnexpectedType("ProcedureType", decl.getType(), lookahead.getLine(), lookahead.getColumn());
+                }
+                if (!(ProcedureType.rawSig(act_pars.types).equals((ProcedureType) decl.getType()))) {
+                    throw new TypeMismatch(decl.getType(), ProcedureType.rawSig(act_pars.types), lookahead.getLine(), lookahead.getColumn());
+                }
             }
 
-            String text = decl.getLexeme() + act_pars.text;
+            String text = id.getLexeme() + act_pars.text;
             flowchart.PrimitiveStatement stmt = new flowchart.PrimitiveStatement(text);
 
             Logger.debug("End: proc_call");
@@ -1530,11 +1551,18 @@ public class Parser {
             Logger.debug("End: expr_list");
             return new _r_expr_list(types, expression.text + extExpression.text);
         }
+        else if (lookahead.equals(Symbol.rpar())) {
+            // Epsilon production
+            Logger.debug("Use: epsilon (eq2)");
+            Logger.debug("End: expr_list");
+            return new _r_expr_list(new ArrayList<Type>(), "");
+        }
         else {
             throw new UnexpectedToken(new Token[] {
                 new Identifier(),
                 new Number(),
                 Symbol.lpar(),
+                Symbol.rpar(),
                 Operator.not(),
                 Operator.plus(),
                 Operator.minus()
