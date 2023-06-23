@@ -1,6 +1,6 @@
-# Compiler Principle Lab 4 of SYSU
+# ROSE
 
-This is a homework project for compiler principle course of Sun Yat-sen University.
+This is a homework project for compiler principle course of Sun Yat-sen University. ROSE stands for Reverse Oberon Software Engineering, which is the main purpose of the project - design and implement a tool that is used for analysing oberon programs.
 
 ## Structure
 
