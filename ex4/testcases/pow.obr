@@ -1,0 +1,29 @@
+(* Assignment 1:  Obreson-0 "Get the pow of a number" program *)
+(* Author: Linloir *)
+
+MODULE Power;
+
+    (* Read and call the defined procedure *)
+    VAR num, pow, result: INTEGER;
+
+    (* Define the get power procedure *)
+    PROCEDURE GetPower(num, pow: INTEGER);
+        VAR cur, result: INTEGER;
+    BEGIN
+        result := 1;
+        cur := 0;
+
+        WHILE cur < pow DO
+            result := result * num;
+            cur := cur + 1
+        END;
+        
+        Write(result)
+    END GetPower;
+    
+    BEGIN
+        Read(num);
+        Read(pow);
+
+        GetPower(num, pow)
+    END POWER.

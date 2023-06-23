@@ -1,0 +1,1130 @@
+[D] File opened
+[D] Start: parse
+[D] Lookahead: <MODULE>
+[D] Use: default
+[D] Start: module
+[D] Lookahead: <MODULE>
+[D] Use: eq1
+[D] Matched: <MODULE>
+[D] Matched: <ID, factorialGcd>
+[D] Matched: <SEMICOLON>
+[D] Start: decls
+[D] Lookahead: <CONST>
+[D] Use: eq1
+[D] Start: cnst_decl
+[D] Lookahead: <CONST>
+[D] Use: eq1
+[D] Matched: <CONST>
+[D] Start: cnst_ass
+[D] Lookahead: <ID, id1>
+[D] Use: eq1
+[D] Matched: <ID, id1>
+[D] Matched: <EQ>
+[D] Start: expr
+[D] Lookahead: <INTEGER, 123>
+[D] Use: eq1
+[D] Start: simple_expr
+[D] Lookahead: <INTEGER, 123>
+[D] Use: eq3
+[D] Start: term
+[D] Lookahead: <INTEGER, 123>
+[D] Use: eq1
+[D] Start: factor
+[D] Lookahead: <INTEGER, 123>
+[D] Use: eq2
+[D] Matched: <INTEGER, 123>
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <SEMICOLON>
+[D] Use: epsilon (eq5)
+[D] End: post_factor
+[D] End: term
+[D] Start: post_term
+[D] Lookahead: <SEMICOLON>
+[D] Use: epsilon (eq4)
+[D] End: post_term
+[D] End: simple_expr
+[D] Start: post_expr
+[D] Lookahead: <SEMICOLON>
+[D] Use: epsilon (eq2)
+[D] End: post_expr
+[D] End: expr
+[D] Matched: <SEMICOLON>
+[D] Start: cnst_ass
+[D] Lookahead: <TYPE>
+[D] Use: epsilon (eq2)
+[D] End: cnst_ass
+[D] End: cnst_ass
+[D] End: cnst_decl
+[D] Start: type_decl
+[D] Lookahead: <TYPE>
+[D] Use: eq1
+[D] Matched: <TYPE>
+[D] Start: type_ass
+[D] Lookahead: <ID, id2>
+[D] Use: eq1
+[D] Matched: <ID, id2>
+[D] Matched: <EQ>
+[D] Start: type
+[D] Lookahead: <TYPE_ARRAY>
+[D] Use: eq2
+[D] Start: type_arr
+[D] Lookahead: <TYPE_ARRAY>
+[D] Use: eq1
+[D] Matched: <TYPE_ARRAY>
+[D] Start: expr
+[D] Lookahead: <INTEGER, 10>
+[D] Use: eq1
+[D] Start: simple_expr
+[D] Lookahead: <INTEGER, 10>
+[D] Use: eq3
+[D] Start: term
+[D] Lookahead: <INTEGER, 10>
+[D] Use: eq1
+[D] Start: factor
+[D] Lookahead: <INTEGER, 10>
+[D] Use: eq2
+[D] Matched: <INTEGER, 10>
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <OF>
+[D] Use: epsilon (eq5)
+[D] End: post_factor
+[D] End: term
+[D] Start: post_term
+[D] Lookahead: <OF>
+[D] Use: epsilon (eq4)
+[D] End: post_term
+[D] End: simple_expr
+[D] Start: post_expr
+[D] Lookahead: <OF>
+[D] Use: epsilon (eq2)
+[D] End: post_expr
+[D] End: expr
+[D] Matched: <OF>
+[D] Start: type
+[D] Lookahead: <TYPE_INTEGER>
+[D] Use: eq4
+[D] Matched: <TYPE_INTEGER>
+[D] End: type
+[D] End: type_arr
+[D] End: type
+[D] Matched: <SEMICOLON>
+[D] Start: type_ass
+[D] Lookahead: <VAR>
+[D] Use: epsilon (eq2)
+[D] End: type_ass
+[D] End: type_ass
+[D] End: type_decl
+[D] Start: var_decl
+[D] Lookahead: <VAR>
+[D] Use: eq1
+[D] Matched: <VAR>
+[D] Start: var_list
+[D] Lookahead: <ID, m>
+[D] Use: eq1
+[D] Start: id_list
+[D] Lookahead: <ID, m>
+[D] Use: eq1
+[D] Matched: <ID, m>
+[D] Start: ext_id
+[D] Lookahead: <COMMA>
+[D] Use: eq1
+[D] Matched: <COMMA>
+[D] Matched: <ID, n>
+[D] Start: ext_id
+[D] Lookahead: <COMMA>
+[D] Use: eq1
+[D] Matched: <COMMA>
+[D] Matched: <ID, result>
+[D] Start: ext_id
+[D] Lookahead: <COLON>
+[D] Use: epsilon (eq2)
+[D] End: ext_id
+[D] End: ext_id
+[D] End: ext_id
+[D] End: id_list
+[D] Matched: <COLON>
+[D] Start: type
+[D] Lookahead: <TYPE_INTEGER>
+[D] Use: eq4
+[D] Matched: <TYPE_INTEGER>
+[D] End: type
+[D] Matched: <SEMICOLON>
+[D] Start: var_list
+[D] Lookahead: <ID, recordid>
+[D] Use: eq1
+[D] Start: id_list
+[D] Lookahead: <ID, recordid>
+[D] Use: eq1
+[D] Matched: <ID, recordid>
+[D] Start: ext_id
+[D] Lookahead: <COLON>
+[D] Use: epsilon (eq2)
+[D] End: ext_id
+[D] End: id_list
+[D] Matched: <COLON>
+[D] Start: type
+[D] Lookahead: <TYPE_RECORD>
+[D] Use: eq3
+[D] Start: type_rec
+[D] Lookahead: <TYPE_RECORD>
+[D] Use: eq1
+[D] Matched: <TYPE_RECORD>
+[D] Start: field_list
+[D] Lookahead: <ID, id3>
+[D] Use: eq1
+[D] Matched: <ID, id3>
+[D] Matched: <COLON>
+[D] Start: type
+[D] Lookahead: <TYPE_INTEGER>
+[D] Use: eq4
+[D] Matched: <TYPE_INTEGER>
+[D] End: type
+[D] Matched: <SEMICOLON>
+[D] Start: field_list
+[D] Lookahead: <END>
+[D] Use: epsilon (eq2)
+[D] End: field_list
+[D] End: field_list
+[D] Matched: <END>
+[D] End: type_rec
+[D] End: type
+[D] Matched: <SEMICOLON>
+[D] Start: var_list
+[D] Lookahead: <PROCEDURE>
+[D] Use: epsilon (eq2)
+[D] End: var_list
+[D] End: var_list
+[D] End: var_list
+[D] End: var_decl
+[D] Start: proc_decl_seq
+[D] Lookahead: <PROCEDURE>
+[D] Use: eq1
+[D] Start: proc_decl
+[D] Lookahead: <PROCEDURE>
+[D] Use: eq1
+[D] Start: proc_head
+[D] Lookahead: <PROCEDURE>
+[D] Use: eq1
+[D] Matched: <PROCEDURE>
+[D] Matched: <ID, gcd>
+[D] Start: proc_pars
+[D] Lookahead: <LPAR>
+[D] Use: eq1
+[D] Matched: <LPAR>
+[D] Start: par_list
+[D] Lookahead: <VAR>
+[D] Use: eq1
+[D] Start: par
+[D] Lookahead: <VAR>
+[D] Use: eq1
+[D] Matched: <VAR>
+[D] Start: id_list
+[D] Lookahead: <ID, m>
+[D] Use: eq1
+[D] Matched: <ID, m>
+[D] Start: ext_id
+[D] Lookahead: <COMMA>
+[D] Use: eq1
+[D] Matched: <COMMA>
+[D] Matched: <ID, n>
+[D] Start: ext_id
+[D] Lookahead: <COLON>
+[D] Use: epsilon (eq2)
+[D] End: ext_id
+[D] End: ext_id
+[D] End: id_list
+[D] Matched: <COLON>
+[D] Start: type
+[D] Lookahead: <TYPE_INTEGER>
+[D] Use: eq4
+[D] Matched: <TYPE_INTEGER>
+[D] End: type
+[D] End: par
+[D] Start: ext_par
+[D] Lookahead: <RPAR>
+[D] Use: epsilon (eq2)
+[D] End: ext_par
+[D] End: par_list
+[D] Matched: <RPAR>
+[D] End: proc_pars
+[D] End: proc_head
+[D] Matched: <SEMICOLON>
+[D] Start: proc_body
+[D] Lookahead: <VAR>
+[D] Use: eq1
+[D] Start: decls
+[D] Lookahead: <VAR>
+[D] Use: eq1
+[D] Start: cnst_decl
+[D] Lookahead: <VAR>
+[D] Use: epsilon (eq2)
+[D] End: cnst_decl
+[D] Start: type_decl
+[D] Lookahead: <VAR>
+[D] Use: epsilon (eq2)
+[D] End: type_decl
+[D] Start: var_decl
+[D] Lookahead: <VAR>
+[D] Use: eq1
+[D] Matched: <VAR>
+[D] Start: var_list
+[D] Lookahead: <ID, t>
+[D] Use: eq1
+[D] Start: id_list
+[D] Lookahead: <ID, t>
+[D] Use: eq1
+[D] Matched: <ID, t>
+[D] Start: ext_id
+[D] Lookahead: <COLON>
+[D] Use: epsilon (eq2)
+[D] End: ext_id
+[D] End: id_list
+[D] Matched: <COLON>
+[D] Start: type
+[D] Lookahead: <TYPE_INTEGER>
+[D] Use: eq4
+[D] Matched: <TYPE_INTEGER>
+[D] End: type
+[D] Matched: <SEMICOLON>
+[D] Start: var_list
+[D] Lookahead: <BEGIN>
+[D] Use: epsilon (eq2)
+[D] End: var_list
+[D] End: var_list
+[D] End: var_decl
+[D] Start: proc_decl_seq
+[D] Lookahead: <BEGIN>
+[D] Use: epsilon (eq2)
+[D] End: proc_decl_seq
+[D] End: decls
+[D] Start: stat_block
+[D] Lookahead: <BEGIN>
+[D] Use: eq1
+[D] Matched: <BEGIN>
+[D] Start: stat_seq
+[D] Lookahead: <IF>
+[D] Use: eq1
+[D] Start: stat
+[D] Lookahead: <IF>
+[D] Use: eq2
+[D] Start: if_stat
+[D] Lookahead: <IF>
+[D] Use: eq1
+[D] Matched: <IF>
+[D] Start: expr
+[D] Lookahead: <LPAR>
+[D] Use: eq1
+[D] Start: simple_expr
+[D] Lookahead: <LPAR>
+[D] Use: eq3
+[D] Start: term
+[D] Lookahead: <LPAR>
+[D] Use: eq1
+[D] Start: factor
+[D] Lookahead: <LPAR>
+[D] Use: eq3
+[D] Matched: <LPAR>
+[D] Start: expr
+[D] Lookahead: <ID, m>
+[D] Use: eq1
+[D] Start: simple_expr
+[D] Lookahead: <ID, m>
+[D] Use: eq3
+[D] Start: term
+[D] Lookahead: <ID, m>
+[D] Use: eq1
+[D] Start: factor
+[D] Lookahead: <ID, m>
+[D] Use: eq1
+[D] Matched: <ID, m>
+[D] Start: sel
+[D] Lookahead: <GT>
+[D] Use: epsilon (eq3)
+[D] End: sel
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <GT>
+[D] Use: epsilon (eq5)
+[D] End: post_factor
+[D] End: term
+[D] Start: post_term
+[D] Lookahead: <GT>
+[D] Use: epsilon (eq4)
+[D] End: post_term
+[D] End: simple_expr
+[D] Start: post_expr
+[D] Lookahead: <GT>
+[D] Use: eq1
+[D] Start: rel_op
+[D] Lookahead: <GT>
+[D] Use: eq5
+[D] End: rel_op
+[D] Matched: <GT>
+[D] Start: simple_expr
+[D] Lookahead: <INTEGER, 3>
+[D] Use: eq3
+[D] Start: term
+[D] Lookahead: <INTEGER, 3>
+[D] Use: eq1
+[D] Start: factor
+[D] Lookahead: <INTEGER, 3>
+[D] Use: eq2
+[D] Matched: <INTEGER, 3>
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <RPAR>
+[D] Use: epsilon (eq5)
+[D] End: post_factor
+[D] End: term
+[D] Start: post_term
+[D] Lookahead: <RPAR>
+[D] Use: epsilon (eq4)
+[D] End: post_term
+[D] End: simple_expr
+[D] End: post_expr
+[D] End: expr
+[D] Matched: <RPAR>
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <THEN>
+[D] Use: epsilon (eq5)
+[D] End: post_factor
+[D] End: term
+[D] Start: post_term
+[D] Lookahead: <THEN>
+[D] Use: epsilon (eq4)
+[D] End: post_term
+[D] End: simple_expr
+[D] Start: post_expr
+[D] Lookahead: <THEN>
+[D] Use: epsilon (eq2)
+[D] End: post_expr
+[D] End: expr
+[D] Matched: <THEN>
+[D] Start: stat_seq
+[D] Lookahead: <ID, t>
+[D] Use: eq1
+[D] Start: stat
+[D] Lookahead: <ID, t>
+[D] Use: eq1
+[D] Matched: <ID, t>
+[D] Start: id_stat
+[D] Lookahead: <ASSIGN>
+[D] Use: eq1
+[D] Start: assignment
+[D] Lookahead: <ASSIGN>
+[D] Use: eq1
+[D] Start: sel
+[D] Lookahead: <ASSIGN>
+[D] Use: epsilon (eq3)
+[D] End: sel
+[D] Matched: <ASSIGN>
+[D] Start: expr
+[D] Lookahead: <INTEGER, 23>
+[D] Use: eq1
+[D] Start: simple_expr
+[D] Lookahead: <INTEGER, 23>
+[D] Use: eq3
+[D] Start: term
+[D] Lookahead: <INTEGER, 23>
+[D] Use: eq1
+[D] Start: factor
+[D] Lookahead: <INTEGER, 23>
+[D] Use: eq2
+[D] Matched: <INTEGER, 23>
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <END>
+[D] Use: epsilon (eq5)
+[D] End: post_factor
+[D] End: term
+[D] Start: post_term
+[D] Lookahead: <END>
+[D] Use: epsilon (eq4)
+[D] End: post_term
+[D] End: simple_expr
+[D] Start: post_expr
+[D] Lookahead: <END>
+[D] Use: epsilon (eq2)
+[D] End: post_expr
+[D] End: expr
+[D] End: assignment
+[D] End: id_stat
+[D] End: stat
+[D] Start: ext_stat
+[D] Lookahead: <END>
+[D] Use: epsilon (eq2)
+[D] End: ext_stat
+[D] End: stat_seq
+[D] Start: elif_seq
+[D] Lookahead: <END>
+[D] Use: epsilon (eq2)
+[D] End: elif_seq
+[D] Start: else_stat
+[D] Lookahead: <END>
+[D] Use: epsilon (eq2)
+[D] End: else_stat
+[D] Matched: <END>
+[D] End: if_stat
+[D] End: stat
+[D] Start: ext_stat
+[D] Lookahead: <SEMICOLON>
+[D] Use: eq1
+[D] Matched: <SEMICOLON>
+[D] Start: stat
+[D] Lookahead: <WHILE>
+[D] Use: eq3
+[D] Start: while_stat
+[D] Lookahead: <WHILE>
+[D] Use: eq1
+[D] Matched: <WHILE>
+[D] Start: expr
+[D] Lookahead: <LPAR>
+[D] Use: eq1
+[D] Start: simple_expr
+[D] Lookahead: <LPAR>
+[D] Use: eq3
+[D] Start: term
+[D] Lookahead: <LPAR>
+[D] Use: eq1
+[D] Start: factor
+[D] Lookahead: <LPAR>
+[D] Use: eq3
+[D] Matched: <LPAR>
+[D] Start: expr
+[D] Lookahead: <ID, m>
+[D] Use: eq1
+[D] Start: simple_expr
+[D] Lookahead: <ID, m>
+[D] Use: eq3
+[D] Start: term
+[D] Lookahead: <ID, m>
+[D] Use: eq1
+[D] Start: factor
+[D] Lookahead: <ID, m>
+[D] Use: eq1
+[D] Matched: <ID, m>
+[D] Start: sel
+[D] Lookahead: <MOD>
+[D] Use: epsilon (eq3)
+[D] End: sel
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <MOD>
+[D] Use: eq4
+[D] Matched: <MOD>
+[D] Start: factor
+[D] Lookahead: <ID, n>
+[D] Use: eq1
+[D] Matched: <ID, n>
+[D] Start: sel
+[D] Lookahead: <NEQ>
+[D] Use: epsilon (eq3)
+[D] End: sel
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <NEQ>
+[D] Use: epsilon (eq5)
+[D] End: post_factor
+[D] End: post_factor
+[D] End: term
+[D] Start: post_term
+[D] Lookahead: <NEQ>
+[D] Use: epsilon (eq4)
+[D] End: post_term
+[D] End: simple_expr
+[D] Start: post_expr
+[D] Lookahead: <NEQ>
+[D] Use: eq1
+[D] Start: rel_op
+[D] Lookahead: <NEQ>
+[D] Use: eq2
+[D] End: rel_op
+[D] Matched: <NEQ>
+[D] Start: simple_expr
+[D] Lookahead: <INTEGER, 0>
+[D] Use: eq3
+[D] Start: term
+[D] Lookahead: <INTEGER, 0>
+[D] Use: eq1
+[D] Start: factor
+[D] Lookahead: <INTEGER, 0>
+[D] Use: eq2
+[D] Matched: <INTEGER, 0>
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <RPAR>
+[D] Use: epsilon (eq5)
+[D] End: post_factor
+[D] End: term
+[D] Start: post_term
+[D] Lookahead: <RPAR>
+[D] Use: epsilon (eq4)
+[D] End: post_term
+[D] End: simple_expr
+[D] End: post_expr
+[D] End: expr
+[D] Matched: <RPAR>
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <DO>
+[D] Use: epsilon (eq5)
+[D] End: post_factor
+[D] End: term
+[D] Start: post_term
+[D] Lookahead: <DO>
+[D] Use: epsilon (eq4)
+[D] End: post_term
+[D] End: simple_expr
+[D] Start: post_expr
+[D] Lookahead: <DO>
+[D] Use: epsilon (eq2)
+[D] End: post_expr
+[D] End: expr
+[D] Matched: <DO>
+[D] Start: stat_seq
+[D] Lookahead: <ID, t>
+[D] Use: eq1
+[D] Start: stat
+[D] Lookahead: <ID, t>
+[D] Use: eq1
+[D] Matched: <ID, t>
+[D] Start: id_stat
+[D] Lookahead: <ASSIGN>
+[D] Use: eq1
+[D] Start: assignment
+[D] Lookahead: <ASSIGN>
+[D] Use: eq1
+[D] Start: sel
+[D] Lookahead: <ASSIGN>
+[D] Use: epsilon (eq3)
+[D] End: sel
+[D] Matched: <ASSIGN>
+[D] Start: expr
+[D] Lookahead: <ID, m>
+[D] Use: eq1
+[D] Start: simple_expr
+[D] Lookahead: <ID, m>
+[D] Use: eq3
+[D] Start: term
+[D] Lookahead: <ID, m>
+[D] Use: eq1
+[D] Start: factor
+[D] Lookahead: <ID, m>
+[D] Use: eq1
+[D] Matched: <ID, m>
+[D] Start: sel
+[D] Lookahead: <MOD>
+[D] Use: epsilon (eq3)
+[D] End: sel
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <MOD>
+[D] Use: eq4
+[D] Matched: <MOD>
+[D] Start: factor
+[D] Lookahead: <ID, n>
+[D] Use: eq1
+[D] Matched: <ID, n>
+[D] Start: sel
+[D] Lookahead: <SEMICOLON>
+[D] Use: epsilon (eq3)
+[D] End: sel
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <SEMICOLON>
+[D] Use: epsilon (eq5)
+[D] End: post_factor
+[D] End: post_factor
+[D] End: term
+[D] Start: post_term
+[D] Lookahead: <SEMICOLON>
+[D] Use: epsilon (eq4)
+[D] End: post_term
+[D] End: simple_expr
+[D] Start: post_expr
+[D] Lookahead: <SEMICOLON>
+[D] Use: epsilon (eq2)
+[D] End: post_expr
+[D] End: expr
+[D] End: assignment
+[D] End: id_stat
+[D] End: stat
+[D] Start: ext_stat
+[D] Lookahead: <SEMICOLON>
+[D] Use: eq1
+[D] Matched: <SEMICOLON>
+[D] Start: stat
+[D] Lookahead: <ID, m>
+[D] Use: eq1
+[D] Matched: <ID, m>
+[D] Start: id_stat
+[D] Lookahead: <ASSIGN>
+[D] Use: eq1
+[D] Start: assignment
+[D] Lookahead: <ASSIGN>
+[D] Use: eq1
+[D] Start: sel
+[D] Lookahead: <ASSIGN>
+[D] Use: epsilon (eq3)
+[D] End: sel
+[D] Matched: <ASSIGN>
+[D] Start: expr
+[D] Lookahead: <ID, n>
+[D] Use: eq1
+[D] Start: simple_expr
+[D] Lookahead: <ID, n>
+[D] Use: eq3
+[D] Start: term
+[D] Lookahead: <ID, n>
+[D] Use: eq1
+[D] Start: factor
+[D] Lookahead: <ID, n>
+[D] Use: eq1
+[D] Matched: <ID, n>
+[D] Start: sel
+[D] Lookahead: <SEMICOLON>
+[D] Use: epsilon (eq3)
+[D] End: sel
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <SEMICOLON>
+[D] Use: epsilon (eq5)
+[D] End: post_factor
+[D] End: term
+[D] Start: post_term
+[D] Lookahead: <SEMICOLON>
+[D] Use: epsilon (eq4)
+[D] End: post_term
+[D] End: simple_expr
+[D] Start: post_expr
+[D] Lookahead: <SEMICOLON>
+[D] Use: epsilon (eq2)
+[D] End: post_expr
+[D] End: expr
+[D] End: assignment
+[D] End: id_stat
+[D] End: stat
+[D] Start: ext_stat
+[D] Lookahead: <SEMICOLON>
+[D] Use: eq1
+[D] Matched: <SEMICOLON>
+[D] Start: stat
+[D] Lookahead: <ID, n>
+[D] Use: eq1
+[D] Matched: <ID, n>
+[D] Start: id_stat
+[D] Lookahead: <ASSIGN>
+[D] Use: eq1
+[D] Start: assignment
+[D] Lookahead: <ASSIGN>
+[D] Use: eq1
+[D] Start: sel
+[D] Lookahead: <ASSIGN>
+[D] Use: epsilon (eq3)
+[D] End: sel
+[D] Matched: <ASSIGN>
+[D] Start: expr
+[D] Lookahead: <ID, t>
+[D] Use: eq1
+[D] Start: simple_expr
+[D] Lookahead: <ID, t>
+[D] Use: eq3
+[D] Start: term
+[D] Lookahead: <ID, t>
+[D] Use: eq1
+[D] Start: factor
+[D] Lookahead: <ID, t>
+[D] Use: eq1
+[D] Matched: <ID, t>
+[D] Start: sel
+[D] Lookahead: <END>
+[D] Use: epsilon (eq3)
+[D] End: sel
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <END>
+[D] Use: epsilon (eq5)
+[D] End: post_factor
+[D] End: term
+[D] Start: post_term
+[D] Lookahead: <END>
+[D] Use: epsilon (eq4)
+[D] End: post_term
+[D] End: simple_expr
+[D] Start: post_expr
+[D] Lookahead: <END>
+[D] Use: epsilon (eq2)
+[D] End: post_expr
+[D] End: expr
+[D] End: assignment
+[D] End: id_stat
+[D] End: stat
+[D] Start: ext_stat
+[D] Lookahead: <END>
+[D] Use: epsilon (eq2)
+[D] End: ext_stat
+[D] End: ext_stat
+[D] End: ext_stat
+[D] End: stat_seq
+[D] Matched: <END>
+[D] End: while_stat
+[D] End: stat
+[D] Start: ext_stat
+[D] Lookahead: <END>
+[D] Use: epsilon (eq2)
+[D] End: ext_stat
+[D] End: ext_stat
+[D] End: stat_seq
+[D] End: stat_block
+[D] Matched: <END>
+[D] Matched: <ID, gcd>
+[D] End: proc_body
+[D] End: proc_decl
+[D] Matched: <SEMICOLON>
+[D] Start: proc_decl_seq
+[D] Lookahead: <PROCEDURE>
+[D] Use: eq1
+[D] Start: proc_decl
+[D] Lookahead: <PROCEDURE>
+[D] Use: eq1
+[D] Start: proc_head
+[D] Lookahead: <PROCEDURE>
+[D] Use: eq1
+[D] Matched: <PROCEDURE>
+[D] Matched: <ID, factorial>
+[D] Start: proc_pars
+[D] Lookahead: <LPAR>
+[D] Use: eq1
+[D] Matched: <LPAR>
+[D] Start: par_list
+[D] Lookahead: <ID, n>
+[D] Use: eq1
+[D] Start: par
+[D] Lookahead: <ID, n>
+[D] Use: eq2
+[D] Start: id_list
+[D] Lookahead: <ID, n>
+[D] Use: eq1
+[D] Matched: <ID, n>
+[D] Start: ext_id
+[D] Lookahead: <COLON>
+[D] Use: epsilon (eq2)
+[D] End: ext_id
+[D] End: id_list
+[D] Matched: <COLON>
+[D] Start: type
+[D] Lookahead: <TYPE_INTEGER>
+[D] Use: eq4
+[D] Matched: <TYPE_INTEGER>
+[D] End: type
+[D] End: par
+[D] Start: ext_par
+[D] Lookahead: <RPAR>
+[D] Use: epsilon (eq2)
+[D] End: ext_par
+[D] End: par_list
+[D] Matched: <RPAR>
+[D] End: proc_pars
+[D] End: proc_head
+[D] Matched: <SEMICOLON>
+[D] Start: proc_body
+[D] Lookahead: <VAR>
+[D] Use: eq1
+[D] Start: decls
+[D] Lookahead: <VAR>
+[D] Use: eq1
+[D] Start: cnst_decl
+[D] Lookahead: <VAR>
+[D] Use: epsilon (eq2)
+[D] End: cnst_decl
+[D] Start: type_decl
+[D] Lookahead: <VAR>
+[D] Use: epsilon (eq2)
+[D] End: type_decl
+[D] Start: var_decl
+[D] Lookahead: <VAR>
+[D] Use: eq1
+[D] Matched: <VAR>
+[D] Start: var_list
+[D] Lookahead: <ID, tmp>
+[D] Use: eq1
+[D] Start: id_list
+[D] Lookahead: <ID, tmp>
+[D] Use: eq1
+[D] Matched: <ID, tmp>
+[D] Start: ext_id
+[D] Lookahead: <COLON>
+[D] Use: epsilon (eq2)
+[D] End: ext_id
+[D] End: id_list
+[D] Matched: <COLON>
+[D] Start: type
+[D] Lookahead: <TYPE_INTEGER>
+[D] Use: eq4
+[D] Matched: <TYPE_INTEGER>
+[D] End: type
+[D] Matched: <SEMICOLON>
+[D] Start: var_list
+[D] Lookahead: <BEGIN>
+[D] Use: epsilon (eq2)
+[D] End: var_list
+[D] End: var_list
+[D] End: var_decl
+[D] Start: proc_decl_seq
+[D] Lookahead: <BEGIN>
+[D] Use: epsilon (eq2)
+[D] End: proc_decl_seq
+[D] End: decls
+[D] Start: stat_block
+[D] Lookahead: <BEGIN>
+[D] Use: eq1
+[D] Matched: <BEGIN>
+[D] Start: stat_seq
+[D] Lookahead: <ID, gcd>
+[D] Use: eq1
+[D] Start: stat
+[D] Lookahead: <ID, gcd>
+[D] Use: eq1
+[D] Matched: <ID, gcd>
+[D] Start: id_stat
+[D] Lookahead: <LPAR>
+[D] Use: eq2
+[D] Start: proc_call
+[D] Lookahead: <LPAR>
+[D] Use: eq1
+[D] Start: act_pars
+[D] Lookahead: <LPAR>
+[D] Use: eq1
+[D] Matched: <LPAR>
+[D] Start: expr_list
+[D] Lookahead: <INTEGER, 3>
+[D] Use: eq1
+[D] Start: expr
+[D] Lookahead: <INTEGER, 3>
+[D] Use: eq1
+[D] Start: simple_expr
+[D] Lookahead: <INTEGER, 3>
+[D] Use: eq3
+[D] Start: term
+[D] Lookahead: <INTEGER, 3>
+[D] Use: eq1
+[D] Start: factor
+[D] Lookahead: <INTEGER, 3>
+[D] Use: eq2
+[D] Matched: <INTEGER, 3>
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <COMMA>
+[D] Use: epsilon (eq5)
+[D] End: post_factor
+[D] End: term
+[D] Start: post_term
+[D] Lookahead: <COMMA>
+[D] Use: epsilon (eq4)
+[D] End: post_term
+[D] End: simple_expr
+[D] Start: post_expr
+[D] Lookahead: <COMMA>
+[D] Use: epsilon (eq2)
+[D] End: post_expr
+[D] End: expr
+[D] Start: ext_expr
+[D] Lookahead: <COMMA>
+[D] Use: eq1
+[D] Matched: <COMMA>
+[D] Start: expr
+[D] Lookahead: <INTEGER, 5>
+[D] Use: eq1
+[D] Start: simple_expr
+[D] Lookahead: <INTEGER, 5>
+[D] Use: eq3
+[D] Start: term
+[D] Lookahead: <INTEGER, 5>
+[D] Use: eq1
+[D] Start: factor
+[D] Lookahead: <INTEGER, 5>
+[D] Use: eq2
+[D] Matched: <INTEGER, 5>
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <RPAR>
+[D] Use: epsilon (eq5)
+[D] End: post_factor
+[D] End: term
+[D] Start: post_term
+[D] Lookahead: <RPAR>
+[D] Use: epsilon (eq4)
+[D] End: post_term
+[D] End: simple_expr
+[D] Start: post_expr
+[D] Lookahead: <RPAR>
+[D] Use: epsilon (eq2)
+[D] End: post_expr
+[D] End: expr
+[D] Start: ext_expr
+[D] Lookahead: <RPAR>
+[D] Use: epsilon (eq2)
+[D] End: ext_expr
+[D] End: ext_expr
+[D] End: expr_list
+[D] Matched: <RPAR>
+[D] End: act_pars
+[D] End: proc_call
+[D] End: id_stat
+[D] End: stat
+[D] Start: ext_stat
+[D] Lookahead: <SEMICOLON>
+[D] Use: eq1
+[D] Matched: <SEMICOLON>
+[D] Start: stat
+[D] Lookahead: <ID, read>
+[D] Use: eq1
+[D] Matched: <ID, read>
+[D] Start: id_stat
+[D] Lookahead: <LPAR>
+[D] Use: eq2
+[D] Start: proc_call
+[D] Lookahead: <LPAR>
+[D] Use: eq1
+[D] Start: act_pars
+[D] Lookahead: <LPAR>
+[D] Use: eq1
+[D] Matched: <LPAR>
+[D] Start: expr_list
+[D] Lookahead: <ID, tmp>
+[D] Use: eq1
+[D] Start: expr
+[D] Lookahead: <ID, tmp>
+[D] Use: eq1
+[D] Start: simple_expr
+[D] Lookahead: <ID, tmp>
+[D] Use: eq3
+[D] Start: term
+[D] Lookahead: <ID, tmp>
+[D] Use: eq1
+[D] Start: factor
+[D] Lookahead: <ID, tmp>
+[D] Use: eq1
+[D] Matched: <ID, tmp>
+[D] Start: sel
+[D] Lookahead: <RPAR>
+[D] Use: epsilon (eq3)
+[D] End: sel
+[D] End: factor
+[D] Start: post_factor
+[D] Lookahead: <RPAR>
+[D] Use: epsilon (eq5)
+[D] End: post_factor
+[D] End: term
+[D] Start: post_term
+[D] Lookahead: <RPAR>
+[D] Use: epsilon (eq4)
+[D] End: post_term
+[D] End: simple_expr
+[D] Start: post_expr
+[D] Lookahead: <RPAR>
+[D] Use: epsilon (eq2)
+[D] End: post_expr
+[D] End: expr
+[D] Start: ext_expr
+[D] Lookahead: <RPAR>
+[D] Use: epsilon (eq2)
+[D] End: ext_expr
+[D] End: expr_list
+[D] Matched: <RPAR>
+[D] End: act_pars
+[D] End: proc_call
+[D] End: id_stat
+[D] End: stat
+[D] Start: ext_stat
+[D] Lookahead: <END>
+[D] Use: epsilon (eq2)
+[D] End: ext_stat
+[D] End: ext_stat
+[D] End: stat_seq
+[D] End: stat_block
+[D] Matched: <END>
+[D] Matched: <ID, factorial>
+[D] End: proc_body
+[D] End: proc_decl
+[D] Matched: <SEMICOLON>
+[D] Start: proc_decl_seq
+[D] Lookahead: <PROCEDURE>
+[D] Use: eq1
+[D] Start: proc_decl
+[D] Lookahead: <PROCEDURE>
+[D] Use: eq1
+[D] Start: proc_head
+[D] Lookahead: <PROCEDURE>
+[D] Use: eq1
+[D] Matched: <PROCEDURE>
+[D] Matched: <ID, fun1>
+[D] Start: proc_pars
+[D] Lookahead: <SEMICOLON>
+[D] Use: epsilon (eq2)
+[D] End: proc_pars
+[D] End: proc_head
+[D] Matched: <SEMICOLON>
+[D] Start: proc_body
+[D] Lookahead: <VAR>
+[D] Use: eq1
+[D] Start: decls
+[D] Lookahead: <VAR>
+[D] Use: eq1
+[D] Start: cnst_decl
+[D] Lookahead: <VAR>
+[D] Use: epsilon (eq2)
+[D] End: cnst_decl
+[D] Start: type_decl
+[D] Lookahead: <VAR>
+[D] Use: epsilon (eq2)
+[D] End: type_decl
+[D] Start: var_decl
+[D] Lookahead: <VAR>
+[D] Use: eq1
+[D] Matched: <VAR>
+[D] Start: var_list
+[D] Lookahead: <ID, t>
+[D] Use: eq1
+[D] Start: id_list
+[D] Lookahead: <ID, t>
+[D] Use: eq1
+[D] Matched: <ID, t>
+[D] Start: ext_id
+[D] Lookahead: <COLON>
+[D] Use: epsilon (eq2)
+[D] End: ext_id
+[D] End: id_list
+[D] Matched: <COLON>
+[D] Start: type
+[D] Lookahead: <TYPE_INTEGER>
+[D] Use: eq4
+[D] Matched: <TYPE_INTEGER>
+[D] End: type
+[D] Matched: <SEMICOLON>
+[D] Start: var_list
+[D] Lookahead: <BEGIN>
+[D] Use: epsilon (eq2)
+[D] End: var_list
+[D] End: var_list
+[D] End: var_decl
+[D] Start: proc_decl_seq
+[D] Lookahead: <BEGIN>
+[D] Use: epsilon (eq2)
+[D] End: proc_decl_seq
+[D] End: decls
+[D] Start: stat_block
+[D] Lookahead: <BEGIN>
+[D] Use: eq1
+[D] Matched: <BEGIN>
+[D] Start: stat_seq
+[D] Lookahead: <ID, tmp>
+[D] Use: eq1
+[D] Start: stat
+[D] Lookahead: <ID, tmp>
+[D] Use: eq1
+[D] Matched: <ID, tmp>
+[E] exceptions.UnknownIdentifier: Unkown identifier 'tmp' at line 35, column 3.

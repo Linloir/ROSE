@@ -1,0 +1,15 @@
+{
+    "java.project.sourcePaths": [
+        // "ex2\\src",
+        "ex4\\src"
+    ],
+    "java.compile.nullAnalysis.mode": "automatic",
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "dependencies\\javacup\\java-cup-11b.jar",
+        "dependencies\\javacup\\java-cup-11b-runtime.jar",
+        "dependencies\\graphs\\callgraph.jar",
+        "dependencies\\graphs\\flowchart.jar",
+        "dependencies\\graphs\\jgraph.jar"
+    ]
+}

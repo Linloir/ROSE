@@ -1,0 +1,31 @@
+(* Assignment 1:  Obreson-0 "Get the pow of a number" program *)
+(* Author: Linloir *)
+
+MODULE Power;
+
+    (* Define the get power procedure *)
+    PROCEDURE GetPower(num, pow: INTEGER);
+        VAR cur, result: INTEGER;
+    BEGIN
+        result := 1;
+        cur := 0;
+
+        WHILE cur < pow DO
+            result := result * num;
+            cur := cur + 1;
+        END;
+
+        RETURN result;
+    END GetPower;
+
+    (* Read and call the defined procedure *)
+    VAR num, pow, result: INTEGER;
+    
+    BEGIN
+        Read(num);
+        Read(pow);
+
+        result := GetPower(num, pow;            (* ERR: Missing Right Parenthesis *)
+
+        Write(result);
+    END Power.

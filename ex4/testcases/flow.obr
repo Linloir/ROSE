@@ -1,0 +1,20 @@
+(* Control flow test program *)
+(* Author: Linloir *)
+
+MODULE ControlFlow;
+
+PROCEDURE TestIf;
+    VAR a, b: INTEGER;
+BEGIN
+    IF a < 1 THEN
+        Write(1)
+    ELSIF a < 2 THEN
+        Write(2)
+    ELSE
+        Write(3)
+    END
+END TestIf;
+
+BEGIN
+    TestIf
+END ControlFlow.

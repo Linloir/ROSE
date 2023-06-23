@@ -1,0 +1,60 @@
+(* 使用了：模块、声明（类型、常量、变量等）、过程声明与调用、语句、表达式等各种构造 *)
+(* 词法、语法、语义均正确的程序 *)
+
+MODULE Calculator;
+    
+    TYPE ID = INTEGER;
+    TYPE Phone = INTEGER;
+    TYPE Message = RECORD
+        id: ID;
+        phone: Phone;
+    END;
+
+    VAR i: INTEGER;
+    VAR m: Message;
+
+    (* 阶乘 *)
+    PROCEDURE Factorial;
+        VAR i, f: INTEGER;
+    BEGIN
+        Read(i);
+        f := 1;
+        WHILE i > 0 DO
+            f := f * i;
+            i := i - 1
+        END;
+        Write(f); WriteLn
+    END Factorial;
+
+    (* 2的幂次方 *)
+    (* 使用按值传递的参数 *)
+    PROCEDURE Power(i: INTEGER)
+        CONST base = 2;
+        VAR i, f, g: INTEGER;
+    BEGIN
+        f := 1; g := base;
+        WHILE i > 0 DO
+            f := f * g;
+            i := i - 1
+        END;
+        Write(f); WriteLn
+    END Power;
+
+    (* 使用按引用传递的参数 *)
+    PROCEDURE UpdateMessage(VAR m: Message);
+    BEGIN
+        m.id := 1;
+        m.phone := 123456789;
+        Write(m.id); WriteLn;
+        Write(m.phone); WriteLn
+    END UpdateMessage;
+
+    (* 主程序 *)
+    BEGIN
+        Factorial;
+        i := 10;
+        Power(i)
+        UpdateMessage(m)
+
+END Calculator.
+
