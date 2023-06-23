@@ -1,11 +1,8 @@
-/*oberon.cup*/
 import java_cup.runtime.*;
 import exceptions.*;
 import java.util.*;
 import callgraph.*;
 
-
-/*Preliminaries to set up and use the scanner.  */
 parser code 
 {:
 	public CallGraph graph;
@@ -58,8 +55,6 @@ init with
 
 scan with {: return getScanner().next_token(); :};
 
-
-/*Terminals (tokens returned by the scanner). */
 /*arithmetic operator*/
 terminal		PLUS, MINUS, TIMES, DIVIDE, MOD, ASSIGN;
 /*logical operator*/

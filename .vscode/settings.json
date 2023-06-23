@@ -1,6 +1,7 @@
 {
     "java.project.sourcePaths": [
         // "ex2\\src",
+        // "ex3\\src",
         "ex4\\src"
     ],
     "java.compile.nullAnalysis.mode": "automatic",

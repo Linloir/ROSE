@@ -9,14 +9,14 @@ public class Main {
     public static void main(String[] args) {
         if (args.length == 0) {
             System.out.println("[E] Error: Missing input file");
-            System.out.println("[+] Usage: java Main [arguments] <inputfile>");
-            System.out.println("[+] argumets:");
-            System.out.println("[+] \t-d, --debug: Print debug information");
-            System.out.println("[+] \t-h, --help: Print this help message");
-            System.out.println("[+] \t-e, --encoding <encoding>: Specify the encoding of the input file");
-            System.out.println("[+] \t\t<encoding>: The encoding of the input file, e.g. \"UTF-8\"");
-            System.out.println("[+] \t-l, --log <logfile>: Specify the log file");
-            System.out.println("[+] \t\t<logfile>: The log file, e.g. \"log.txt\"");
+            System.out.println("\nUsage: java Main [arguments] <inputfile>");
+            System.out.println("argumets:");
+            System.out.println("\t-d, --debug: Print debug information");
+            System.out.println("\t-h, --help: Print this help message");
+            System.out.println("\t-e, --encoding <encoding>: Specify the encoding of the input file");
+            System.out.println("\t\t<encoding>: The encoding of the input file, e.g. \"UTF-8\"");
+            System.out.println("\t-l, --log <logfile>: Specify the log file");
+            System.out.println("\t\t<logfile>: The log file, e.g. \"log.txt\"");
             return;
         }
 
@@ -30,15 +30,15 @@ public class Main {
             if (args[i].equals("-d") || args[i].equals("--debug")) {
                 debug = true;
             } else if (args[i].equals("-h") || args[i].equals("--help")) {
-                System.out.println("[I] Usage: java Main [arguments] <inputfile>");
-                System.out.println("[+] argumets:");
-                System.out.println("[+] \t-d, --debug: Print debug information");
-                System.out.println("[+] \t    --delay: Delay procedure signature checking");
-                System.out.println("[+] \t-e, --encoding <encoding>: Specify the encoding of the input file");
-                System.out.println("[+] \t\t<encoding>: The encoding of the input file, e.g. \"UTF-8\"");
-                System.out.println("[+] \t-h, --help: Print this help message");
-                System.out.println("[+] \t-l, --log <logfile>: Specify the log file");
-                System.out.println("[+] \t\t<logfile>: The log file, e.g. \"log.txt\"");
+                System.out.println("Usage: java Main [arguments] <inputfile>");
+                System.out.println("argumets:");
+                System.out.println("\t-d, --debug: Print debug information");
+                System.out.println("\t    --delay: Delay procedure signature checking");
+                System.out.println("\t-e, --encoding <encoding>: Specify the encoding of the input file");
+                System.out.println("\t\t<encoding>: The encoding of the input file, e.g. \"UTF-8\"");
+                System.out.println("\t-h, --help: Print this help message");
+                System.out.println("\t-l, --log <logfile>: Specify the log file");
+                System.out.println("\t\t<logfile>: The log file, e.g. \"log.txt\"");
                 return;
             } else if (args[i].equals("--delay")) {
                 delay = true;
@@ -47,15 +47,15 @@ public class Main {
                     encodingName = args[++i];
                 } else {
                     System.out.println("[E] Error: Missing encoding name");
-                    System.out.println("[+] Usage: java Main [arguments] <inputfile>");
-                    System.out.println("[+] argumets:");
-                    System.out.println("[+] \t-d, --debug: Print debug information");
-                System.out.println("[+] \t    --delay: Delay procedure signature checking");
-                    System.out.println("[+] \t-e, --encoding <encoding>: Specify the encoding of the input file");
-                    System.out.println("[+] \t\t<encoding>: The encoding of the input file, e.g. \"UTF-8\"");
-                    System.out.println("[+] \t-h, --help: Print this help message");
-                    System.out.println("[+] \t-l, --log <logfile>: Specify the log file");
-                    System.out.println("[+] \t\t<logfile>: The log file, e.g. \"log.txt\"");
+                    System.out.println("\nUsage: java Main [arguments] <inputfile>");
+                    System.out.println("argumets:");
+                    System.out.println("\t-d, --debug: Print debug information");
+                    System.out.println("\t    --delay: Delay procedure signature checking");
+                    System.out.println("\t-e, --encoding <encoding>: Specify the encoding of the input file");
+                    System.out.println("\t\t<encoding>: The encoding of the input file, e.g. \"UTF-8\"");
+                    System.out.println("\t-h, --help: Print this help message");
+                    System.out.println("\t-l, --log <logfile>: Specify the log file");
+                    System.out.println("\t\t<logfile>: The log file, e.g. \"log.txt\"");
                     return;
                 }
             } else if (args[i].equals("-l") || args[i].equals("--log")) {
@@ -63,15 +63,15 @@ public class Main {
                     logFileName = args[++i];
                 } else {
                     System.out.println("[E] Error: Missing log file name");
-                    System.out.println("[+] Usage: java Main [arguments] <inputfile>");
-                    System.out.println("[+] argumets:");
-                    System.out.println("[+] \t-d, --debug: Print debug information");
-                System.out.println("[+] \t    --delay: Delay procedure signature checking");
-                    System.out.println("[+] \t-e, --encoding <encoding>: Specify the encoding of the input file");
-                    System.out.println("[+] \t\t<encoding>: The encoding of the input file, e.g. \"UTF-8\"");
-                    System.out.println("[+] \t-h, --help: Print this help message");
-                    System.out.println("[+] \t-l, --log <logfile>: Specify the log file");
-                    System.out.println("[+] \t\t<logfile>: The log file, e.g. \"log.txt\"");
+                    System.out.println("\nUsage: java Main [arguments] <inputfile>");
+                    System.out.println("argumets:");
+                    System.out.println("\t-d, --debug: Print debug information");
+                    System.out.println("\t    --delay: Delay procedure signature checking");
+                    System.out.println("\t-e, --encoding <encoding>: Specify the encoding of the input file");
+                    System.out.println("\t\t<encoding>: The encoding of the input file, e.g. \"UTF-8\"");
+                    System.out.println("\t-h, --help: Print this help message");
+                    System.out.println("\t-l, --log <logfile>: Specify the log file");
+                    System.out.println("\t\t<logfile>: The log file, e.g. \"log.txt\"");
                     return;
                 }
             } else {
@@ -81,15 +81,15 @@ public class Main {
 
         if (inputFileName == null) {
             System.out.println("[E] Error: Missing input file");
-            System.out.println("[+] Usage: java Main [arguments] <inputfile>");
-            System.out.println("[+] argumets:");
-            System.out.println("[+] \t-d, --debug: Print debug information");
-                System.out.println("[+] \t    --delay: Delay procedure signature checking");
-            System.out.println("[+] \t-e, --encoding <encoding>: Specify the encoding of the input file");
-            System.out.println("[+] \t\t<encoding>: The encoding of the input file, e.g. \"UTF-8\"");
-            System.out.println("[+] \t-h, --help: Print this help message");
-            System.out.println("[+] \t-l, --log <logfile>: Specify the log file");
-            System.out.println("[+] \t\t<logfile>: The log file, e.g. \"log.txt\"");
+            System.out.println("\nUsage: java Main [arguments] <inputfile>");
+            System.out.println("argumets:");
+            System.out.println("\t-d, --debug: Print debug information");
+            System.out.println("\t    --delay: Delay procedure signature checking");
+            System.out.println("\t-e, --encoding <encoding>: Specify the encoding of the input file");
+            System.out.println("\t\t<encoding>: The encoding of the input file, e.g. \"UTF-8\"");
+            System.out.println("\t-h, --help: Print this help message");
+            System.out.println("\t-l, --log <logfile>: Specify the log file");
+            System.out.println("\t\t<logfile>: The log file, e.g. \"log.txt\"");
             return;
         }
 
