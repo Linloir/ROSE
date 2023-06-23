@@ -1,4 +1,6 @@
-# BNF Grammar for Oberon-0 Language
+# Oberon-0 Language Analysis
+
+## BNF Grammar
 
 $$
 \begin{aligned}
@@ -92,7 +94,7 @@ $$
 \end{aligned}
 $$
 
-## 2. SDT of Oberon-0
+## Syntax Directed Translation
 
 $$
 \begin{aligned}

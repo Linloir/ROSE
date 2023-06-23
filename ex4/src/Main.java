@@ -12,6 +12,7 @@ public class Main {
             System.out.println("\nUsage: java Main [arguments] <inputfile>");
             System.out.println("argumets:");
             System.out.println("\t-d, --debug: Print debug information");
+            System.out.println("\t    --delay: Delay procedure signature checking");
             System.out.println("\t-h, --help: Print this help message");
             System.out.println("\t-e, --encoding <encoding>: Specify the encoding of the input file");
             System.out.println("\t\t<encoding>: The encoding of the input file, e.g. \"UTF-8\"");
