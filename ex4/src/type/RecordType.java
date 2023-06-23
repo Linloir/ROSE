@@ -9,7 +9,12 @@ public class RecordType extends Type {
 
     public RecordType(Hashtable<String, Declaration> fields) {
         super("record");
-        this.fields = fields;
+        this.fields = new Hashtable<String, Declaration>();
+        Enumeration<String> keys = fields.keys();
+        while (keys.hasMoreElements()) {
+            String key = keys.nextElement();
+            this.fields.put(key.toLowerCase(), fields.get(key));
+        }
     }
 
     public Hashtable<String, Declaration> getFields() {
@@ -22,7 +27,20 @@ public class RecordType extends Type {
             return false;
         }
         RecordType other = (RecordType) obj;
-        return fields.equals(other.fields);
+        if (fields.size() != other.fields.size()) {
+            return false;
+        }
+        Enumeration<String> keys = fields.keys();
+        while (keys.hasMoreElements()) {
+            String key = keys.nextElement();
+            if (!other.fields.containsKey(key)) {
+                return false;
+            }
+            if (!fields.get(key).getType().equals(other.fields.get(key).getType())) {
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override

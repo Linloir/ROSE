@@ -31,6 +31,6 @@ public class ArrayType extends Type {
 
     @Override
     public String toString() {
-        return elementType + "[ ]";
+        return elementType + "[]";
     }
 }

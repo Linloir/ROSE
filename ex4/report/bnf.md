@@ -1,6 +1,4 @@
-# Assignment 4
-
-## 1. BNF Grammar of Oberon-0
+# BNF Grammar for Oberon-0 Language
 
 $$
 \begin{aligned}

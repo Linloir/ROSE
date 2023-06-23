@@ -1,0 +1,38 @@
+(* A module that contains loop call in procedures *)
+(* Demonstrates the ability of delay signature checking *)
+
+(* Test out with '--delay' flag on and off *)
+
+(* Author: Linloir *)
+
+MODULE CallLoop;
+    VAR i, j: INTEGER;
+        k: BOOLEAN;
+
+    PROCEDURE func1 (
+        unmodifiable: BOOLEAN;
+        VAR modifiable: INTEGER
+    );
+        VAR innerVar: RECORD
+                field1: INTEGER;
+                field2: ARRAY 5 OF INTEGER;
+            END;
+    BEGIN
+        func2 (innerVar, modifiable)
+    END func1;
+
+    PROCEDURE func2 (
+        unmodifiable: RECORD
+                field1: INTEGER;
+                field2: ARRAY 5 OF INTEGER;
+            END;
+        modifiable: INTEGER
+    );
+        VAR something: BOOLEAN;
+    BEGIN
+        func1 (something, unmodifiable.field1)
+    END func2;
+
+BEGIN
+    func1 (k, i)
+END CallLoop.
