@@ -1,2 +1,0 @@
-[D] File opened
-[E] exceptions.LexicalException: LexicalException: Open comment error
