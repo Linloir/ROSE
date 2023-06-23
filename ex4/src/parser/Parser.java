@@ -12,6 +12,7 @@ import java.util.*;
 
 public class Parser {
     public static boolean DELAY_CALL_VERIFY = false;
+    public static boolean PARSE_ONLY = false;
 
     private Env env;
     private ArrayList<ProcCall> calls;
@@ -291,8 +292,10 @@ public class Parser {
             Logger.info("Procedure call signatures verified");
         }
 
-        Logger.info("Generating flowchart");
-        g_mod.show();
+        if (!PARSE_ONLY) {
+            Logger.info("Generating flowchart");
+            g_mod.show();
+        }
     }
 
     private _r_module module() throws IOException, OberonException {

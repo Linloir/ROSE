@@ -17,6 +17,7 @@ public class Main {
             System.out.println("\t\t<encoding>: The encoding of the input file, e.g. \"UTF-8\"");
             System.out.println("\t-l, --log <logfile>: Specify the log file");
             System.out.println("\t\t<logfile>: The log file, e.g. \"log.txt\"");
+            System.out.println("\t    --parse-only: Only parse the input file and return syntax errors");
             return;
         }
 
@@ -25,6 +26,7 @@ public class Main {
         String logFileName = null;
         String inputFileName = null;
         boolean delay = false;
+        boolean parseOnly = false;
 
         for (int i = 0; i < args.length; i++) {
             if (args[i].equals("-d") || args[i].equals("--debug")) {
@@ -39,6 +41,7 @@ public class Main {
                 System.out.println("\t-h, --help: Print this help message");
                 System.out.println("\t-l, --log <logfile>: Specify the log file");
                 System.out.println("\t\t<logfile>: The log file, e.g. \"log.txt\"");
+                System.out.println("\t    --parse-only: Only parse the input file and return syntax errors");
                 return;
             } else if (args[i].equals("--delay")) {
                 delay = true;
@@ -56,6 +59,7 @@ public class Main {
                     System.out.println("\t-h, --help: Print this help message");
                     System.out.println("\t-l, --log <logfile>: Specify the log file");
                     System.out.println("\t\t<logfile>: The log file, e.g. \"log.txt\"");
+                    System.out.println("\t    --parse-only: Only parse the input file and return syntax errors");
                     return;
                 }
             } else if (args[i].equals("-l") || args[i].equals("--log")) {
@@ -72,8 +76,11 @@ public class Main {
                     System.out.println("\t-h, --help: Print this help message");
                     System.out.println("\t-l, --log <logfile>: Specify the log file");
                     System.out.println("\t\t<logfile>: The log file, e.g. \"log.txt\"");
+                    System.out.println("\t    --parse-only: Only parse the input file and return syntax errors");
                     return;
                 }
+            } else if (args[i].equals("--parse-only")) {
+                parseOnly = true;
             } else {
                 inputFileName = args[i];
             }
@@ -90,6 +97,7 @@ public class Main {
             System.out.println("\t-h, --help: Print this help message");
             System.out.println("\t-l, --log <logfile>: Specify the log file");
             System.out.println("\t\t<logfile>: The log file, e.g. \"log.txt\"");
+            System.out.println("\t    --parse-only: Only parse the input file and return syntax errors");
             return;
         }
 
@@ -98,6 +106,7 @@ public class Main {
             Logger.maxLine = 100;
 
             Parser.DELAY_CALL_VERIFY = delay;
+            Parser.PARSE_ONLY = parseOnly;
 
             if (logFileName != null) {
                 FileOutputStream logStream = new FileOutputStream(logFileName);

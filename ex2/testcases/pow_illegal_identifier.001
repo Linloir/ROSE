@@ -1,4 +1,4 @@
-(* Assignment 1:  Obreson-0 "Get the pow of a number" program *)
+(* Get the pow of a number *)
 (* Author: Linloir *)
 
 MODULE Power;
