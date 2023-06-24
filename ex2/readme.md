@@ -19,7 +19,9 @@ The structure of the project is as follows:
 |
 ├── generate.bat    # Batch file for generating lexer
 ├── build.bat       # Batch file for compiling classes
-└── run.bat         # Batch file for running the program
+├── run.bat         # Batch file for running the program
+|
+└── lexgen.pdf      # Homework task report, irrelevant to the project itself
 ```
 
 ## Usage

@@ -10,9 +10,11 @@ The structure of the project is as follows:
 
 ```text
 .
-├── bin        # Compiled classes
-├── src        # Source codes
-└── testcases  # Test cases
+├── bin/        # Compiled classes
+├── src/        # Source codes
+├── testcases/  # Test cases
+|
+└── yaccgen.pdf # Homework task report, irrelevant to the project itself
 ```
 
 ## Usage
