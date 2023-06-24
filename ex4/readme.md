@@ -122,6 +122,153 @@ A' &\rightarrow \delta \; | \; \epsilon
 \end{aligned}
 $$
 
+---
+
+Based on the converted BNF grammar of Oberon-0, the translation can be done by adding syntax analysis actions to the grammar and thus getting a Syntax-Directed Translation (SDT).
+
+The main idea of the SDT is to add statement blocks to the graph every time a statement is matched.
+
+During the whole parsing process, there are 4 scenarios:
+
+- Creating a `Module` instance, which hold all the graphs of the program
+- Creating a `Procedure` instance on the `Module` instance
+- Creating a `Statement` instance on the `Procedure` instance
+- Creating a `Statement` instance on the `StatementSequence` instance, which can be obtained by calling `getTrueBody()`, `getFalseBody()` on a `IfStatement` instance or `getLoopBody()` on a `WhileStatement` instance
+
+As for the first scenario, it's only done once, so there is no need for extra cares.
+
+As for the second scenario, the `Procedure` instance is created after a `proc` non-terminal is matched, and will then be append on the `Module` instance. The `Module` instance can be accessed from the context by passing the instance as an inherited attribute alongside the path from the root node to the node where the `Procedure` instance is created.
+
+As for the third and fourth scenario, things become a little complex, since the context where the new `Statement` instance is created has no information of whether the instance should be added to a `Procedure` instance or a `StatementSequence` instance.
+
+A common solution would be to maintain a stack of objects which can be either a `Procedure` instance or a `StatementSequence` instance. Every time a `Statement` instance is created, it will be appended to whatever object is on the top of the stack. However, this solution is not very elegant since it requires type checking every time it's accessing the top of the stack.
+
+In the implementation, the problem is solved by exposing a `SeqHandle` interface which describes such an object that allows appending a `Statement` instance to it.
+
+### SeqHandle
+
+The `SeqHandle` interface is defined as follows:
+
+```java
+package parser;
+
+import flowchart.*;
+
+public interface SeqHandle {
+    public AbstractStatement add(AbstractStatement arg0);
+}
+```
+
+Benefitting from the syntax sugar of java, an object implementing such surface can be created via lambda expression, thus letting the caller of `statement` to pass in a handle despite whether it's in the context of a `Procedure` instance or a `StatementSequence` instance.
+
+```java
+public void procedure(flowchart.Module g_mod) throws IOException, OberonException {
+    // ...
+    Procedure g_proc = g_mod.add(name);
+    // ...
+    
+    // Convert the procedure context into a SeqHandle
+    SeqHandle g_stat = g_proc::add;
+    statment(g_stat);
+}
+
+public void if_stat() throws IOException, OberonException {
+    // ...
+    IfStatement ifstmt = new IfStatement(text);
+    // ...
+
+    // Convert the statement sequence context into a SeqHandle
+    SeqHandle g_stat = ifstmt.getTrueBody()::add;
+    statement(g_stat);
+}
+
+public void statement(SeqHandle g_stat) throws IOException, OberonException {
+    // ...
+
+    // Append the statement to the context without
+    // knowing whether it's a procedure or a statement sequence
+    PrimitiveStatement stmt = new PrimitiveStatement(text);
+    g_stat.add(stmt);
+}
+```
+
+---
+
+Addition to syntax check, the parser also provide ability of sematic check, including type check and scope check. Such ability is implemented by using a type system and a symbol table.
+
+### Type System
+
+The type system is implemented by defining a base class `Type`, and deriving a group of classes defining the possible primitive types of Oberon-0 from that base class.
+
+For example, a `Procedure` type is a subtype of `Type`, and stores a list of `Declaration` instances as its parameters. The use of `Declaration` class instead of `Type` class is to benefit from the modifier information stored in declarations when doing semantic check.
+
+```java
+public class ProcedureType extends Type {
+    ArrayList<Declaration> params;
+
+    public ProcedureType(ArrayList<Declaration> params);
+
+    public static ProcedureType rawSig(ArrayList<Type> types);
+
+    public ArrayList<Declaration> getParams();
+
+    @Override
+    public boolean equals(Object obj);
+
+    @Override
+    public int hashCode();
+
+    @Override
+    public String toString();
+}
+```
+
+The primitive types supported by the type system includes:
+
+`AnyType`, `ArrayType`, `BooleanType`, `IntegerType`, `ModuleType`, `ProcedureType`, `RecordType`, `TypedefType`
+
+### Symbol Table
+
+The symbol table is implemented following the descriptions of `Env` class in the *Dragon Book Ver.2, Chapter 2*.
+
+During the parsing procedure, at time a scope is entered, a new `Env` instance pointing to its parent environment is created. When a declaration is encountered, it will be added to the current environment. When a reference is encountered, the symbol table will be searched from the current environment to its parent environment until the reference is found or the root environment is reached.
+
+In a more concise way, the environment instance stores the declaration in the current scope, the tree structure of environmens provides access from the current scope to the outside scopes and prevents access between sibling scopes.
+
+The `Env` class is defined as follows:
+
+```java
+public class Env {
+
+    private Hashtable<String, Declaration> decls;
+    protected Env prev;
+
+    /**
+     * Creates a new embedded environment based on the current environment.
+     * 
+     * @param cur The current environment.
+     * @return The new environment.
+     */
+    public Env(Env cur);
+
+    /**
+     * Puts an declaration in the environment.
+     * 
+     * @param s The lexeme of the declaration.
+     * @param t The declaration.
+     */
+    public void putDecl(String s, Declaration t) throws OberonException;
+
+    /**
+     * Gets a declaration from the environment.
+     * 
+     * @param s The lexeme of the declaration.
+     * @return The declaration.
+     */
+    public Declaration getDecl(String s);
+}
+```
+
 ## Extra Notice
 
 As the given documentation doesn't specify the behavior when invoking a procedure that has not yet been declared, for example:
