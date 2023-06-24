@@ -2,30 +2,6 @@ import java.io.*;
 
 public class Main {
 	public static void main(String[] args) throws Exception {
-		// if (argv.length == 0)
-		// {
-		// 	System.out.println("Usage : java Main <inputfile>");
-		// }
-		// else
-		// {
-		// 	for (int i = 0; i < argv.length; i++) 
-		// 	{
-		// 		Lexer obj = new Lexer(new java.io.FileReader(argv[i]));
-		// 		Parser p=new Parser(obj);
-		// 		System.out.println(argv[i] + ":");
-		// 		try
-		// 		{	
-		// 			p.parse();
-		// 		}
-		// 		catch(Exception ex)
-		// 		{
-		// 			System.out.println(obj.get_line()+" line "+ obj.get_column()+" column");
-		// 			System.out.println(ex.getMessage());
-		// 		}
-		// 		System.out.println();
-		// 	}
-		// }
-
 		if (args.length == 0) {
 			System.out.println("[E] Error: Missing input file");
 			System.out.println("\nUsage: java Main [arguments] <inputfile>");

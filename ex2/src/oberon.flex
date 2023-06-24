@@ -20,7 +20,7 @@ import exceptions.*;
 %ignorecase                             // Ignore case
 
 %eofval{
-    return Symbol.eof(yyline, yycolumn);
+    return Symbol.eof(yyline + 1, yycolumn + 1);
 %eofval}
 
 %{
@@ -40,35 +40,31 @@ comment       = "(*" ~ "*)"             // Reference: JFlex Manual
 /* Keywords */
 
 <YYINITIAL> {
-    "BOOLEAN"       { return Keyword.typeBool(yyline, yycolumn); }
-    "INTEGER"       { return Keyword.typeInt(yyline, yycolumn); }
-    "RECORD"        { return Keyword.typeRecord(yyline, yycolumn); }
-    "ARRAY"         { return Keyword.typeArray(yyline, yycolumn); }
-    "OF"            { return Keyword.symOf(yyline, yycolumn); }
+    "BOOLEAN"       { return Keyword.typeBool(yyline + 1, yycolumn + 1); }
+    "INTEGER"       { return Keyword.typeInt(yyline + 1, yycolumn + 1); }
+    "RECORD"        { return Keyword.typeRecord(yyline + 1, yycolumn + 1); }
+    "ARRAY"         { return Keyword.typeArray(yyline + 1, yycolumn + 1); }
+    "OF"            { return Keyword.symOf(yyline + 1, yycolumn + 1); }
 
-    "DO"            { return Keyword.symDo(yyline, yycolumn); }
-    "WHILE"         { return Keyword.symWhile(yyline, yycolumn); }
-    "IF"            { return Keyword.symIf(yyline, yycolumn); }
-    "ELSE"          { return Keyword.symElse(yyline, yycolumn); }
-    "ELSIF"         { return Keyword.symElif(yyline, yycolumn); }
-    "THEN"          { return Keyword.symThen(yyline, yycolumn); }
+    "DO"            { return Keyword.symDo(yyline + 1, yycolumn + 1); }
+    "WHILE"         { return Keyword.symWhile(yyline + 1, yycolumn + 1); }
+    "IF"            { return Keyword.symIf(yyline + 1, yycolumn + 1); }
+    "ELSE"          { return Keyword.symElse(yyline + 1, yycolumn + 1); }
+    "ELSIF"         { return Keyword.symElif(yyline + 1, yycolumn + 1); }
+    "THEN"          { return Keyword.symThen(yyline + 1, yycolumn + 1); }
 
-    "CONST"         { return Keyword.symConst(yyline, yycolumn); }
-    "VAR"           { return Keyword.symVar(yyline, yycolumn); }
-    "TYPE"          { return Keyword.symType(yyline, yycolumn); }
+    "CONST"         { return Keyword.symConst(yyline + 1, yycolumn + 1); }
+    "VAR"           { return Keyword.symVar(yyline + 1, yycolumn + 1); }
+    "TYPE"          { return Keyword.symType(yyline + 1, yycolumn + 1); }
 
-    "MODULE"        { return Keyword.symModule(yyline, yycolumn); }
-    "PROCEDURE"     { return Keyword.symProcedure(yyline, yycolumn); }
-    "BEGIN"         { return Keyword.symBegin(yyline, yycolumn); }
-    "END"           { return Keyword.symEnd(yyline, yycolumn); }
+    "MODULE"        { return Keyword.symModule(yyline + 1, yycolumn + 1); }
+    "PROCEDURE"     { return Keyword.symProcedure(yyline + 1, yycolumn + 1); }
+    "BEGIN"         { return Keyword.symBegin(yyline + 1, yycolumn + 1); }
+    "END"           { return Keyword.symEnd(yyline + 1, yycolumn + 1); }
 
-    "READ"          { return Keyword.symRead(yyline, yycolumn); }
-    "WRITE"         { return Keyword.symWrite(yyline, yycolumn); }
-    "WRITELN"       { return Keyword.symWriteln(yyline, yycolumn); }
-
-    "DIV"           { return Operator.div(yyline, yycolumn); }
-    "MOD"           { return Operator.mod(yyline, yycolumn); }
-    "OR"            { return Operator.or(yyline, yycolumn); }
+    "DIV"           { return Operator.div(yyline + 1, yycolumn + 1); }
+    "MOD"           { return Operator.mod(yyline + 1, yycolumn + 1); }
+    "OR"            { return Operator.or(yyline + 1, yycolumn + 1); }
 }
 
 /* Other lexes*/
@@ -95,47 +91,47 @@ comment       = "(*" ~ "*)"             // Reference: JFlex Manual
                         if (yytext().startsWith("0")) {
                             // Parse as octal number
                             try {
-                                return new Number(yyline, yycolumn, Integer.parseInt(yytext(), 8));
+                                return new Number(yyline + 1, yycolumn + 1, Integer.parseInt(yytext(), 8));
                             } catch (NumberFormatException e) {
                                 throw new LexicalException("Invalid number");
                             }
                         } else {
                             // Parse as decimal number
                             try {
-                                return new Number(yyline, yycolumn, Integer.parseInt(yytext()));
+                                return new Number(yyline + 1, yycolumn + 1, Integer.parseInt(yytext()));
                             } catch (NumberFormatException e) {
                                 throw new LexicalException("Invalid number");
                             }
                         }
                     }
     
-    {identifier}    { return new Identifier(yyline, yycolumn, yytext()); }
+    {identifier}    { return new Identifier(yyline + 1, yycolumn + 1, yytext()); }
 
-    ":="            { return Operator.assign(yyline, yycolumn); }
+    ":="            { return Operator.assign(yyline + 1, yycolumn + 1); }
     
-    "+"             { return Operator.plus(yyline, yycolumn); }
-    "-"             { return Operator.minus(yyline, yycolumn); }
-    "*"             { return Operator.mult(yyline, yycolumn); }
+    "+"             { return Operator.plus(yyline + 1, yycolumn + 1); }
+    "-"             { return Operator.minus(yyline + 1, yycolumn + 1); }
+    "*"             { return Operator.mult(yyline + 1, yycolumn + 1); }
     
-    "&"             { return Operator.and(yyline, yycolumn); }
-    "~"             { return Operator.not(yyline, yycolumn); }
+    "&"             { return Operator.and(yyline + 1, yycolumn + 1); }
+    "~"             { return Operator.not(yyline + 1, yycolumn + 1); }
     
-    "="             { return Operator.eq(yyline, yycolumn); }
-    "#"             { return Operator.neq(yyline, yycolumn); }
+    "="             { return Operator.eq(yyline + 1, yycolumn + 1); }
+    "#"             { return Operator.neq(yyline + 1, yycolumn + 1); }
 
-    "<"             { return Operator.lt(yyline, yycolumn); }
-    "<="            { return Operator.lteq(yyline, yycolumn); }
-    ">"             { return Operator.gt(yyline, yycolumn); }
-    ">="            { return Operator.gteq(yyline, yycolumn); }
+    "<"             { return Operator.lt(yyline + 1, yycolumn + 1); }
+    "<="            { return Operator.lteq(yyline + 1, yycolumn + 1); }
+    ">"             { return Operator.gt(yyline + 1, yycolumn + 1); }
+    ">="            { return Operator.gteq(yyline + 1, yycolumn + 1); }
 
-    "("             { return Symbol.lpar(yyline, yycolumn); }
-    ")"             { return Symbol.rpar(yyline, yycolumn); }
-    "["             { return Symbol.lbrack(yyline, yycolumn); }
-    "]"             { return Symbol.rbrack(yyline, yycolumn); }
-    ":"             { return Symbol.colon(yyline, yycolumn); }
-    ";"             { return Symbol.semicol(yyline, yycolumn); }
-    ","             { return Symbol.comma(yyline, yycolumn); }
-    "."             { return Symbol.dot(yyline, yycolumn); }
+    "("             { return Symbol.lpar(yyline + 1, yycolumn + 1); }
+    ")"             { return Symbol.rpar(yyline + 1, yycolumn + 1); }
+    "["             { return Symbol.lbrack(yyline + 1, yycolumn + 1); }
+    "]"             { return Symbol.rbrack(yyline + 1, yycolumn + 1); }
+    ":"             { return Symbol.colon(yyline + 1, yycolumn + 1); }
+    ";"             { return Symbol.semicol(yyline + 1, yycolumn + 1); }
+    ","             { return Symbol.comma(yyline + 1, yycolumn + 1); }
+    "."             { return Symbol.dot(yyline + 1, yycolumn + 1); }
 }
 
 /* Error fallback */
